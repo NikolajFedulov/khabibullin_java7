@@ -4,18 +4,16 @@ public class PascalTriangle {
     public static final int LINES = 10;
 
     public static void main(String[] args){
-        int[][] p = new int[LINES][];
-        p[0] = new int[1];
-        System.out.println(p[0][0] = 1);
-        p[1] = new int[2];
-        p[1][0] = p[1][1] = 1;
-        System.out.println(p[1][0] + " " + p[1][1]);
-        for (int i = 2; i < LINES; i++){
-            p[i] = new int[i+1];
-            System.out.print((p[i][0] = 1) + " ");
-            for (int j = 1; j < i; j++)
-                System.out.print((p[i][j] = p[i-1][j-1] + p[i-1][j]) + " ");
-            System.out.println(p[i][i] = 1);
+        int[][] triangleElement = new int[LINES][];
+        for (int i = 0; i < triangleElement.length; i++){
+            for (int k = 0; k < triangleElement.length-1-i; k++) {
+                System.out.print("\t");
+            }
+            triangleElement[i] = new int[i+1];
+            for (int j = 0; j < i; j++) {
+                System.out.print((triangleElement[i][j] = j-1 < 0 ? 1 : triangleElement[i-1][j-1] + triangleElement[i-1][j]) + "\t\t");
+            }
+            System.out.println(triangleElement[i][i] = 1);
         }
     }
 }
